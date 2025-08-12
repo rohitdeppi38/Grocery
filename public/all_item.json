@@ -1,0 +1,227 @@
+[
+  {
+    "id": 1,
+    "name": "Tomato",
+    "price": 30,
+    "unit": "kg",
+    "stock": 20,
+    "rating": 4.2,
+    "image":  "https://media.istockphoto.com/id/807319554/photo/fresh-tomato-on-black-background.jpg?s=1024x1024&w=is&k=20&c=-vt9OFzpFgnAXEXIS3MW9vGFM8WW0ocDiuWKJvKzb18="
+  },
+  {
+    "id": 2,
+    "name": "Potato",
+    "price": 25,
+    "unit": "kg",
+    "stock": 50,
+    "rating": 4.0,
+    "image": "https://cdn.pixabay.com/photo/2016/08/11/08/43/potatoes-1585060_1280.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Apple",
+    "price": 120,
+    "unit": "kg",
+    "stock": 15,
+    "rating": 4.6,
+    "image": "https://cdn.pixabay.com/photo/2017/09/26/13/31/apple-2788616_1280.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Banana",
+    "price": 50,
+    "unit": "dozen",
+    "stock": 30,
+    "rating": 4.3,
+    "image": "https://media.istockphoto.com/id/903846488/photo/bunch-of-bananas-on-wooden-background.jpg?s=1024x1024&w=is&k=20&c=qO64bvECnsBCtfnMKvpGy0gtK4fgLK-VQt1fhOlOEoM="
+  },
+  {
+    "id": 5,
+    "name": "Milk",
+    "price": 60,
+    "unit": "litre",
+    "stock": 10,
+    "rating": 4.8,
+    "image": "https://5.imimg.com/data5/SELLER/Default/2022/7/BE/VS/CF/22737692/ldpe-milk-pouch-1000x1000.png"
+  },
+  {
+    "id": 6,
+    "name": "Rice",
+    "price": 80,
+    "unit": "kg",
+    "stock": 40,
+    "rating": 4.5,
+    "image": "https://www.makro.co.za/sys-master/images/hc9/h05/9180862447646/silo-MIN_17165_EAA_large"
+  },
+  {
+    "id": 7,
+    "name": "Flour",
+    "price": 45,
+    "unit": "kg",
+    "stock": 60,
+    "rating": 4.2,
+    "image": "https://5.imimg.com/data5/SELLER/Default/2022/11/ES/MD/CI/136093897/whenergy-makhan-bhog-10kg-wheat-flour-pack-1000x1000.png"
+  },
+  {
+    "id": 8,
+    "name": "Cooking Oil",
+    "price": 130,
+    "unit": "litre",
+    "stock": 25,
+    "rating": 4.1,
+    "image": "https://www.grabon.in/indulge/wp-content/uploads/2022/05/Best-Cooking-Oils.jpg"
+  },
+  {
+    "id": 9,
+    "name": "Butter",
+    "price": 90,
+    "unit": "500g",
+    "stock": 12,
+    "rating": 4.7,
+    "image": "https://www.allrecipes.com/thmb/YEHvUygNdvsUwzKttGh314d9n1M=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/sticks-of-butter-photo-by-twoellis-GettyImages-149134517-resized-3911123142a141eca2340a4bb63e0869.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Eggs",
+    "price": 70,
+    "unit": "dozen",
+    "stock": 35,
+    "rating": 4.4,
+    "image": "https://thumbs.dreamstime.com/b/tray-eggs-packaging-thirty-carton-31819055.jpg"
+  },
+  {
+    "id": 11,
+    "name": "Sugar",
+    "price": 45,
+    "unit": "kg",
+    "stock": 50,
+    "rating": 4.2,
+    "image": "https://5.imimg.com/data5/SELLER/Default/2021/12/HV/CW/QJ/143924471/pp-sugar-bags-1000x1000.jpg"
+  },
+  {
+    "id": 12,
+    "name": "Tea Leaves",
+    "price": 250,
+    "unit": "kg",
+    "stock": 18,
+    "rating": 4.6,
+    "image": "https://rukminim1.flixcart.com/image/832/832/l0fm07k0/tea/a/d/8/seasons-tea-patti-garden-fresh-assam-ctc-black-tea-leaves-pouch-original-imagc8fmw2hqzb2g.jpeg?q=70"
+  },
+  {
+    "id": 13,
+    "name": "Salt",
+    "price": 20,
+    "unit": "kg",
+    "stock": 100,
+    "rating": 4.3,
+    "image": "https://5.imimg.com/data5/SELLER/Default/2023/3/TI/YD/BD/162111588/plastic-laminated-salt-packaging-pouch-1000x1000.jpg"
+  },
+  {
+    "id": 14,
+    "name": "Black Pepper",
+    "price": 500,
+    "unit": "kg",
+    "stock": 8,
+    "rating": 4.9,
+    "image": "https://i.pinimg.com/736x/c4/15/85/c4158598b33b97bd0ba9c7e6ed653422.jpg"
+  },
+  {
+    "id": 15,
+    "name": "Chilli Powder",
+    "price": 300,
+    "unit": "kg",
+    "stock": 14,
+    "rating": 4.6,
+    "image": "https://cpimg.tistatic.com/07543061/b/4/Chilli-Powder-Pouch.jpg"
+  },
+  {
+    "id": 16,
+    "name": "Coriander Leaves",
+    "price": 15,
+    "unit": "bunch",
+    "stock": 22,
+    "rating": 4.0,
+    "image":"https://png.pngtree.com/background/20230607/original/pngtree-fresh-coriander-leaves-hanging-onto-a-black-surface-picture-image_2902530.jpg"
+  },
+  {
+    "id": 17,
+    "name": "Carrot",
+    "price": 40,
+    "unit": "kg",
+    "stock": 18,
+    "rating": 4.3,
+    "image": "https://cdn.pixabay.com/photo/2018/05/29/23/23/carrots-3440368_1280.jpg"
+  },
+  {
+    "id": 18,
+    "name": "Mango Juice",
+    "price": 90,
+    "unit": "litre",
+    "stock": 14,
+    "rating": 4.5,
+    "image": "https://www.organicfacts.net/wp-content/uploads/mangojuice.jpg"
+  },
+  {
+    "id": 19,
+    "name": "Biscuits",
+    "price": 25,
+    "unit": "pack",
+    "stock": 40,
+    "rating": 4.1,
+    "image": "https://img.grouponcdn.com/deal/2VbYn6wt7n2GY74BQ6Mm2rKT7g6C/2V-2048x1229/v1/c700x420.jpg"
+  },
+  {
+    "id": 20,
+    "name": "Peanut Butter",
+    "price": 180,
+    "unit": "500g",
+    "stock": 12,
+    "rating": 4.7,
+    "image": "https://tse4.mm.bing.net/th/id/OIP.O-qj0OCLNNn5Za6RuoxlmwHaHa?rs=1&pid=ImgDetMain&o=7&rm=3"
+  },
+  {
+    "id": 21,
+    "name": "Cucumber",
+    "price": 28,
+    "unit": "kg",
+    "stock": 55,
+    "rating": 4.2,
+    "image": "https://media.istockphoto.com/id/895071966/photo/raw-green-cucumbers.jpg?s=1024x1024&w=is&k=20&c=pbDIFZrCBMrCAVIKWIFdXEOaCorEVLxbW1pdvJmrUpA="
+  },
+  {
+    "id": 22,
+    "name": "Cabbage",
+    "price": 18,
+    "unit": "piece",
+    "stock": 45,
+    "rating": 4.1,
+    "image": "https://cdn.pixabay.com/photo/2018/10/03/22/08/kohl-3722517_1280.jpg"
+  },
+  {
+    "id": 23,
+    "name": "Paneer",
+    "price": 280,
+    "unit": "kg",
+    "stock": 20,
+    "rating": 4.9,
+    "image": "https://m.media-amazon.com/images/I/81hD14MN91L._SL1500_.jpg"
+  },
+  {
+    "id": 24,
+    "name": "Green Peas",
+    "price": 90,
+    "unit": "kg",
+    "stock": 35,
+    "rating": 4.3,
+    "image": "https://www.wallpaperflare.com/static/640/963/653/peas-pods-ripe-green-wallpaper.jpg"
+  },
+  {
+    "id": 25,
+    "name": "Spinach",
+    "price": 12,
+    "unit": "bunch",
+    "stock": 30,
+    "rating": 4.6,
+    "image": "https://cdn.pixabay.com/photo/2022/08/27/04/01/vegetables-7413569_1280.jpg"
+  }
+]

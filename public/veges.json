@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "name": "Tomato",
+    "price": 25,
+    "unit": "kg",
+    "stock": 120,
+    "rating": 4.5,
+    "image": "https://media.istockphoto.com/id/807319554/photo/fresh-tomato-on-black-background.jpg?s=1024x1024&w=is&k=20&c=-vt9OFzpFgnAXEXIS3MW9vGFM8WW0ocDiuWKJvKzb18="
+  },
+  {
+    "id": 2,
+    "name": "Potato",
+    "price": 22,
+    "unit": "kg",
+    "stock": 150,
+    "rating": 4.2,
+    "image": "https://cdn.pixabay.com/photo/2016/08/11/08/43/potatoes-1585060_1280.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Onion",
+    "price": 30,
+    "unit": "kg",
+    "stock": 80,
+    "rating": 4.0,
+    "image": "https://cdn.pixabay.com/photo/2018/05/09/10/58/onion-3385081_1280.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Carrot",
+    "price": 28,
+    "unit": "kg",
+    "stock": 95,
+    "rating": 4.3,
+    "image": "https://cdn.pixabay.com/photo/2018/05/29/23/23/carrots-3440368_1280.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Cabbage",
+    "price": 18,
+    "unit": "kg",
+    "stock": 70,
+    "rating": 4.1,
+    "image": "https://cdn.pixabay.com/photo/2018/10/03/22/08/kohl-3722517_1280.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Spinach",
+    "price": 35,
+    "unit": "kg",
+    "stock": 60,
+    "rating": 4.6,
+    "image": "https://cdn.pixabay.com/photo/2022/08/27/04/01/vegetables-7413569_1280.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Cauliflower",
+    "price": 27,
+    "unit": "kg",
+    "stock": 85,
+    "rating": 4.4,
+    "image": "https://media.istockphoto.com/id/524005764/photo/cauliflower.jpg?s=1024x1024&w=is&k=20&c=AYyjOlbfC5_VJtxMcPXDdcYsqzCLb4HwrhasR02D26s="
+  },
+  {
+    "id": 8,
+    "name": "Green Beans",
+    "price": 32,
+    "unit": "kg",
+    "stock": 100,
+    "rating": 4.2,
+    "image": "https://media.istockphoto.com/id/654548656/photo/fresh-green-beans-on-dark-wooden-rustic-background.jpg?s=1024x1024&w=is&k=20&c=szYJd9n9KtVxFHL509fbbtwvHOKoDKFGu6CMCSKhtc8="
+  },
+  {
+    "id": 9,
+    "name": "Capsicum",
+    "price": 40,
+    "unit": "kg",
+    "stock": 50,
+    "rating": 4.5,
+    "image": "https://cdn.pixabay.com/photo/2017/09/03/13/18/capsicum-2710262_1280.jpg"
+  },
+  {
+    "id": 10,
+    "name": "Brinjal",
+    "price": 24,
+    "unit": "kg",
+    "stock": 65,
+    "rating": 4.0,
+    "image": "https://media.istockphoto.com/id/1328668312/photo/whole-eggplant-on-wooden-background.jpg?s=1024x1024&w=is&k=20&c=6_CymOkKLssMmyyDJdrLObxTFhJAymXsw9owKyfShIE="
+  }
+]

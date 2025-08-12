@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "name": "Apple",
+    "price": 120,
+    "unit": "kg",
+    "stock": 30,
+    "rating": 4.6,
+    "image": "https://cdn.pixabay.com/photo/2017/09/26/13/31/apple-2788616_1280.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Banana",
+    "price": 50,
+    "unit": "dozen",
+    "stock": 50,
+    "rating": 4.4,
+    "image": "https://usercontent1.hubstatic.com/14017802_f520.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Orange",
+    "price": 90,
+    "unit": "kg",
+    "stock": 25,
+    "rating": 4.3,
+    "image": "https://tse2.mm.bing.net/th/id/OIP.a7pHxxnUScjVp9MPF4mWoAHaFi?rs=1&pid=ImgDetMain&o=7&rm=3"
+  },
+  {
+    "id": 4,
+    "name": "Grapes",
+    "price": 80,
+    "unit": "kg",
+    "stock": 40,
+    "rating": 4.5,
+    "image": "https://tse4.mm.bing.net/th/id/OIP.D6ixoz9FRKG2ahV35UVw3gHaEo?rs=1&pid=ImgDetMain&o=7&rm=3"
+  },
+  {
+    "id": 5,
+    "name": "Mango",
+    "price": 150,
+    "unit": "kg",
+    "stock": 20,
+    "rating": 4.8,
+    "image": "https://tse4.mm.bing.net/th/id/OIP.O5PI9L5tQ6Ml5o0OT_mw-QHaE8?rs=1&pid=ImgDetMain&o=7&rm=3"
+  }
+]
