@@ -1,10 +1,21 @@
 import React, { useEffect, useState } from 'react';
 
+type fruits ={
+  id: number;
+  name: string;
+  image: string;
+  category:string;
+  price: number;
+  unit: string;
+  rating: number;
+  stock: number;
+}
+
 const Fruits = () => {
-  const [fruits, setfruits] = useState([]);
+  const [fruits, setfruits] = useState<fruits[]>([]);
 
   useEffect(() => {
-    fetch('fruits.json')
+    fetch('all_item.json')
       .then(response => response.json())
       .then(data => {
         console.log(data);
@@ -16,6 +27,7 @@ const Fruits = () => {
   return (
     <div className='grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 p-6 gap-6'>
       {fruits.map((fruit) => (
+        fruit.category==="fruit" &&
         <div key={fruit.id} className='flex bg-white items-center rounded-xl cursor-pointer shadow-md hover:shadow-2xl flex-col transition-all duration-300 p-4 border'>
           <img src={fruit.image} alt={fruit.name} className='w-full h-50 object-cover rounded-lg mb-4' />
           <p className='text-xl font-semibold text-green-800 mb-4'>{fruit.name} </p>

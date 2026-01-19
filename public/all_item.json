@@ -2,15 +2,17 @@
   {
     "id": 1,
     "name": "Tomato",
+    "category": "vegetable",
     "price": 30,
     "unit": "kg",
     "stock": 20,
     "rating": 4.2,
-    "image":  "https://media.istockphoto.com/id/807319554/photo/fresh-tomato-on-black-background.jpg?s=1024x1024&w=is&k=20&c=-vt9OFzpFgnAXEXIS3MW9vGFM8WW0ocDiuWKJvKzb18="
+    "image": "https://media.istockphoto.com/id/807319554/photo/fresh-tomato-on-black-background.jpg?s=1024x1024&w=is&k=20&c=-vt9OFzpFgnAXEXIS3MW9vGFM8WW0ocDiuWKJvKzb18="
   },
   {
     "id": 2,
     "name": "Potato",
+    "category": "vegetable",
     "price": 25,
     "unit": "kg",
     "stock": 50,
@@ -20,6 +22,7 @@
   {
     "id": 3,
     "name": "Apple",
+    "category": "fruit",
     "price": 120,
     "unit": "kg",
     "stock": 15,
@@ -29,6 +32,7 @@
   {
     "id": 4,
     "name": "Banana",
+    "category": "fruit",
     "price": 50,
     "unit": "dozen",
     "stock": 30,
@@ -38,6 +42,7 @@
   {
     "id": 5,
     "name": "Milk",
+    "category": "dairy",
     "price": 60,
     "unit": "litre",
     "stock": 10,
@@ -47,6 +52,7 @@
   {
     "id": 6,
     "name": "Rice",
+    "category": "grain",
     "price": 80,
     "unit": "kg",
     "stock": 40,
@@ -56,6 +62,7 @@
   {
     "id": 7,
     "name": "Flour",
+    "category": "grain",
     "price": 45,
     "unit": "kg",
     "stock": 60,
@@ -65,6 +72,7 @@
   {
     "id": 8,
     "name": "Cooking Oil",
+    "category": "grocery",
     "price": 130,
     "unit": "litre",
     "stock": 25,
@@ -74,6 +82,7 @@
   {
     "id": 9,
     "name": "Butter",
+    "category": "dairy",
     "price": 90,
     "unit": "500g",
     "stock": 12,
@@ -83,6 +92,7 @@
   {
     "id": 10,
     "name": "Eggs",
+    "category": "dairy",
     "price": 70,
     "unit": "dozen",
     "stock": 35,
@@ -92,6 +102,7 @@
   {
     "id": 11,
     "name": "Sugar",
+    "category": "grocery",
     "price": 45,
     "unit": "kg",
     "stock": 50,
@@ -101,6 +112,7 @@
   {
     "id": 12,
     "name": "Tea Leaves",
+    "category": "beverage",
     "price": 250,
     "unit": "kg",
     "stock": 18,
@@ -110,6 +122,7 @@
   {
     "id": 13,
     "name": "Salt",
+    "category": "spice",
     "price": 20,
     "unit": "kg",
     "stock": 100,
@@ -119,6 +132,7 @@
   {
     "id": 14,
     "name": "Black Pepper",
+    "category": "spice",
     "price": 500,
     "unit": "kg",
     "stock": 8,
@@ -128,6 +142,7 @@
   {
     "id": 15,
     "name": "Chilli Powder",
+    "category": "spice",
     "price": 300,
     "unit": "kg",
     "stock": 14,
@@ -137,15 +152,17 @@
   {
     "id": 16,
     "name": "Coriander Leaves",
+    "category": "vegetable",
     "price": 15,
     "unit": "bunch",
     "stock": 22,
     "rating": 4.0,
-    "image":"https://png.pngtree.com/background/20230607/original/pngtree-fresh-coriander-leaves-hanging-onto-a-black-surface-picture-image_2902530.jpg"
+    "image": "https://png.pngtree.com/background/20230607/original/pngtree-fresh-coriander-leaves-hanging-onto-a-black-surface-picture-image_2902530.jpg"
   },
   {
     "id": 17,
     "name": "Carrot",
+    "category": "vegetable",
     "price": 40,
     "unit": "kg",
     "stock": 18,
@@ -155,6 +172,7 @@
   {
     "id": 18,
     "name": "Mango Juice",
+    "category": "beverage",
     "price": 90,
     "unit": "litre",
     "stock": 14,
@@ -164,6 +182,7 @@
   {
     "id": 19,
     "name": "Biscuits",
+    "category": "bakery",
     "price": 25,
     "unit": "pack",
     "stock": 40,
@@ -173,6 +192,7 @@
   {
     "id": 20,
     "name": "Peanut Butter",
+    "category": "grocery",
     "price": 180,
     "unit": "500g",
     "stock": 12,
@@ -182,6 +202,7 @@
   {
     "id": 21,
     "name": "Cucumber",
+    "category": "vegetable",
     "price": 28,
     "unit": "kg",
     "stock": 55,
@@ -191,6 +212,7 @@
   {
     "id": 22,
     "name": "Cabbage",
+    "category": "vegetable",
     "price": 18,
     "unit": "piece",
     "stock": 45,
@@ -200,6 +222,7 @@
   {
     "id": 23,
     "name": "Paneer",
+    "category": "dairy",
     "price": 280,
     "unit": "kg",
     "stock": 20,
@@ -209,6 +232,7 @@
   {
     "id": 24,
     "name": "Green Peas",
+    "category": "vegetable",
     "price": 90,
     "unit": "kg",
     "stock": 35,
@@ -218,6 +242,7 @@
   {
     "id": 25,
     "name": "Spinach",
+    "category": "vegetable",
     "price": 12,
     "unit": "bunch",
     "stock": 30,

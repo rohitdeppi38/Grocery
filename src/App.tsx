@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import Header from './components/header/header'
+import Header from './components/header/header.tsx'
 import {Outlet} from "react-router-dom"
-import Footer from "./components/footer/footer.jsx"
+import Footer from "./components/footer/footer.tsx"
 
 
 
@@ -14,7 +14,6 @@ function App() {
       <Header/>
       <Outlet/>
       <Footer/>
-    
     </>
   )
 }
