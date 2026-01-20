@@ -46,12 +46,16 @@ const Header = () => {
             </NavLink>
           ))}
 
-          <button className="text-lg font-semibold px-5 py-1 bg-orange-600 text-white rounded-lg cursor-pointer hover:bg-orange-500">
+         <NavLink to={'/login'}>
+         <button className="text-lg font-semibold px-5 py-1 bg-orange-600 text-white rounded-lg cursor-pointer hover:bg-orange-500">
             Login
           </button>
+         </NavLink>
+          <NavLink to={'/signup'}>
           <button className="text-lg font-semibold px-5 py-1 bg-blue-500 text-white rounded-lg cursor-pointer hover:bg-blue-400">
             Sign up
           </button>
+          </NavLink>
         </nav>
 
         {/* Mobile Hamburger */}
@@ -86,12 +90,16 @@ const Header = () => {
                 {item.name}
               </NavLink>
             ))}
+            <NavLink to={'/login'} onClick={() => setOpen(false)}>
             <button className="w-full py-2 bg-orange-600 text-white rounded-lg">
               Login
             </button>
+            </NavLink>
+            <NavLink to={'/signup'} onClick={() => setOpen(false)}>
             <button className="w-full py-2 bg-blue-500 text-white rounded-lg">
               Sign up
             </button>
+            </NavLink>
           </ul>
         </div>
       )}

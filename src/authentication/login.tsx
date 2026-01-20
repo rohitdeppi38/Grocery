@@ -18,6 +18,7 @@ const Login = () => {
             type="email"
             placeholder="rohit@gmail.com"
             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+            name="email"
           />
         </div>
 
@@ -30,6 +31,7 @@ const Login = () => {
             type="password"
             placeholder="Enter your password"
             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+            name="password"
           />
         </div>
 
