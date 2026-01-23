@@ -15,7 +15,7 @@ import Login from './authentication/login'
 import Signup from './authentication/signup'
 import WishList from './pages/wishlistPage'
 import Cart from './pages/cart'
-import store from './Store/store/store'
+import store from './app/store'
 
 const router = createBrowserRouter([
   {
