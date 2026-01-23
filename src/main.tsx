@@ -3,6 +3,8 @@ import './index.css'
 import App from './App'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { GoogleOAuthProvider } from '@react-oauth/google'
+import { Provider } from 'react-redux'
+
 
 import All from './components/component/all'
 import Vegetables from './components/component/vegetables'
@@ -11,6 +13,9 @@ import Tea from './components/component/dairy'
 import RiceOil from './components/component/rice_oil'
 import Login from './authentication/login'
 import Signup from './authentication/signup'
+import WishList from './pages/wishlistPage'
+import Cart from './pages/cart'
+import store from './Store/store/store'
 
 const router = createBrowserRouter([
   {
@@ -23,8 +28,16 @@ const router = createBrowserRouter([
       {path:'/dairy',element:<Tea/>},
       {path:'/riceOil',element:<RiceOil/>},
       {path:'/login',element:<Login/>},
-      {path:'/signup',element:<Signup/>}
+      {path:'/signup',element:<Signup/>},
     ]
+  },
+  {
+    path: '/wishlist',
+    element:<WishList/>
+  },
+  {
+    path:'/cart',
+    element:<Cart/>
   }
 ])
 
@@ -36,6 +49,8 @@ if (!rootElement) {
 
 createRoot(rootElement).render(
   <GoogleOAuthProvider clientId='684059861966-jahprcdnb485pja5n1qu1li3r6iuktrh.apps.googleusercontent.com'>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </GoogleOAuthProvider>
 )
