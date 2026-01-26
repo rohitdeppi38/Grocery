@@ -11,7 +11,7 @@ type fruits ={
   stock: number;
 }
 
-const Fruits = () => {
+const Fruits:React.FC = () => {
   const [fruits, setfruits] = useState<fruits[]>([]);
 
   useEffect(() => {

@@ -11,7 +11,7 @@ type riceOilStructure ={
   stock: number;
 }
 
-const RiceOil = () => {
+const RiceOil:React.FC = () => {
   const [riceOil, setRiceOil] = useState<riceOilStructure[]>([]);
 
   useEffect(() => {

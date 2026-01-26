@@ -11,7 +11,7 @@ type vegeStructure ={
   stock: number;
 }
 
-const Vegetables = () => {
+const Vegetables:React.FC = () => {
   const [veges, setveges] = useState<vegeStructure[]>([]);
 
   useEffect(() => {

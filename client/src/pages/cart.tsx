@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import CartItems from '../components/component/cartItems'
 import axios from 'axios';
 
 //type imported
 import { type List } from '../types/itemList';
+import ItemsGrid from '../components/component/itemsGrid';
 
 
 const Cart = () => {
@@ -37,7 +37,7 @@ const Cart = () => {
             {/**cart section */}
             <div className='flex'>
                 <div className=''>
-                    <CartItems items={data}/>
+                    <ItemsGrid items={data}/>
                 </div>
             </div>
         </main>

@@ -1,7 +1,7 @@
 import {createSlice,type PayloadAction} from "@reduxjs/toolkit";
 
 import type{List} from "../../types/itemList"
-import { fetchItems } from "./itemthunks";
+import { fetchCartItems } from "./itemthunks";
 
 interface ItemState {
     cartItems:List[];
@@ -15,20 +15,27 @@ const initialState:ItemState={
     error: null
 }
 
-const itemSlice = createSlice({
+const CartItemSlice = createSlice({
     name:"items",
     initialState,
-   reducers:{},
+   reducers:{
+        addLocalCart(state,action:PayloadAction<List>){
+            state.cartItems.push(action.payload);
+        },
+        removeLocalCart(state,action:PayloadAction<string>){
+            state.cartItems = state.cartItems.filter(items=>items.id!==action.payload);
+        }
+   },
     extraReducers:builder=>{
         builder
-        .addCase(fetchItems.pending,state=>{
+        .addCase(fetchCartItems.pending,state=>{
             state.loading=true;
         })
-        .addCase(fetchItems.fulfilled,(state,action)=>{
+        .addCase(fetchCartItems.fulfilled,(state,action)=>{
             state.loading=false;
             state.cartItems=action.payload;
         })
-        .addCase(fetchItems.rejected,(state,action)=>{
+        .addCase(fetchCartItems.rejected,(state,action)=>{
             state.loading=false;
             state.error = action.error.message ?? "Failed";
         })
@@ -37,4 +44,5 @@ const itemSlice = createSlice({
 
 });
 
-export default itemSlice.reducer
+export default CartItemSlice.reducer
+export const {addLocalCart,removeLocalCart} = CartItemSlice.actions;

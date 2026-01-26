@@ -1,27 +1,18 @@
 import { useEffect, useState } from 'react';
-import WishListGrid from '../components/component/wishlistGrid';
 import axios from 'axios';
 
 import {type List} from "../types/itemList"
+import ItemsGrid from '../components/component/itemsGrid';
 
 function WishList() {
   const [wishData, setWishData] = useState<List[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulating a fetch delay for effect, replace URL with real endpoint
-    axios.get("YOUR_API_URL")
-      .then((res) => {
-        setWishData(res.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log("Error is ", err);
-        setLoading(false);
-      });
+    // useSelector call hoga idhar 
   }, []);
 
-  const handleRemove = (id: number) => {
+  const handleRemove = (id: string) => {
     setWishData(prev => prev.filter(item => item.id !== id));
   };
 
@@ -49,7 +40,7 @@ function WishList() {
             </div>
         ) : (
             // Passing the data down to the grid
-            <WishListGrid items={wishData} onRemove={handleRemove} />
+            <ItemsGrid items={wishData} onRemove={handleRemove} />
         )}
       </main>
     </div>

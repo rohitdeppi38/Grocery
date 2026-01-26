@@ -1,5 +1,5 @@
 export type List = {
-  id: number;
+  id: string;
   name: string;
   image: string;
   category: string;

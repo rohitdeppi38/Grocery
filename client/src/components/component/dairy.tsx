@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 type dairyStock = {
   id: number;
@@ -11,7 +11,7 @@ type dairyStock = {
   stock: number;
 };
 
-const Tea = () => {
+const Tea: React.FC = () => {
   const [dairyStock, setdairyStock] = useState<dairyStock[]>([]);
 
   useEffect(() => {
