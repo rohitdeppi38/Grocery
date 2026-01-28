@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { 
-  FiSearch, FiMapPin, FiMenu, FiX, 
-  FiShoppingCart, FiHeart, FiChevronRight, FiLoader 
+import {
+  FiSearch, FiMapPin, FiMenu, FiX,
+  FiShoppingCart, FiHeart, FiChevronRight, FiLoader
 } from "react-icons/fi";
 
 const Header = () => {
@@ -12,7 +12,7 @@ const Header = () => {
   const [searchOpen, setSearchOpen] = useState(false);
   const [isLoadingLoc, setIsLoadingLoc] = useState(false);
   const [locationData, setLocationData] = useState<{ city: string; region: string } | null>(null);
-  
+
   // Refs & Hooks
   const searchInputRef = useRef<HTMLInputElement>(null);
   const { pathname } = useLocation();
@@ -61,11 +61,11 @@ const Header = () => {
   return (
     <>
       {/* ================= 1. SEARCH OVERLAY (Focus Mode) ================= */}
-      <div 
+      <div
         className={`fixed inset-0 z-[60] bg-stone-900/40 backdrop-blur-sm transition-opacity duration-300 ${searchOpen ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'}`}
         onClick={() => setSearchOpen(false)}
       >
-        <div 
+        <div
           className={`absolute top-0 left-0 w-full bg-white shadow-xl transition-transform duration-300 ease-out ${searchOpen ? 'translate-y-0' : '-translate-y-full'}`}
           onClick={(e) => e.stopPropagation()}
         >
@@ -78,14 +78,14 @@ const Header = () => {
                 placeholder="Search for 'Fresh Spinach', 'Milk', 'Organic Eggs'..."
                 className="w-full pl-10 pr-12 py-3 text-lg md:text-2xl font-light text-gray-800 placeholder:text-gray-300 border-b border-gray-100 focus:border-emerald-500 focus:outline-none bg-transparent transition-colors"
               />
-              <button 
+              <button
                 onClick={() => setSearchOpen(false)}
                 className="absolute right-0 top-1/2 -translate-y-1/2 p-2 hover:bg-gray-100 rounded-full transition-colors"
               >
                 <FiX size={24} className="text-gray-500" />
               </button>
             </div>
-            
+
             <div className="mt-6 flex flex-wrap gap-2 animate-in fade-in slide-in-from-top-4 duration-500 delay-100">
               <span className="text-xs font-bold text-gray-400 uppercase tracking-wider mr-2 self-center">Trending:</span>
               {['🥔 Potato', '🧅 Onion', '🍅 Tomato', '🍌 Banana'].map(tag => (
@@ -99,11 +99,11 @@ const Header = () => {
       </div>
 
       {/* ================= 2. MAIN NAVBAR ================= */}
-      <header 
+      <header
         className={`
           sticky top-0 z-50 w-full transition-all duration-300 border-b border-transparent
-          ${isScrolled 
-            ? 'bg-white/90 backdrop-blur-md shadow-sm border-gray-100 py-2' 
+          ${isScrolled
+            ? 'bg-white/90 backdrop-blur-md shadow-sm border-gray-100 py-2'
             : 'bg-white py-4'}
         `}
       >
@@ -113,7 +113,7 @@ const Header = () => {
           <NavLink to="/" className="flex items-center gap-2 group z-50">
             <div className="relative w-10 h-10 overflow-hidden rounded-xl border-2 border-emerald-500 shadow-lg shadow-emerald-100 transition-transform group-hover:scale-105">
               <img
-                src="/logo.png" 
+                src="/logo.png"
                 alt="Logo"
                 className="w-full h-full object-cover"
                 onError={(e) => {
@@ -139,8 +139,8 @@ const Header = () => {
                 to={link.path}
                 className={({ isActive }) => `
                   px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300
-                  ${isActive 
-                    ? 'bg-white text-emerald-700 shadow-sm' 
+                  ${isActive
+                    ? 'bg-white text-emerald-700 shadow-sm'
                     : 'text-gray-500 hover:text-emerald-600 hover:bg-gray-100'}
                 `}
               >
@@ -151,14 +151,14 @@ const Header = () => {
 
           {/* RIGHT: Actions */}
           <div className="flex items-center gap-1 sm:gap-3">
-            
+
             {/* Location (Desktop) */}
-            <button 
+            <button
               onClick={!locationData ? getCityByIP : undefined}
               className={`
                 hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold transition-all border mr-2
-                ${locationData 
-                  ? 'bg-emerald-50 text-emerald-700 border-emerald-200 cursor-default' 
+                ${locationData
+                  ? 'bg-emerald-50 text-emerald-700 border-emerald-200 cursor-default'
                   : 'bg-white text-gray-600 border-gray-200 hover:border-emerald-400 hover:text-emerald-600'}
               `}
             >
@@ -170,7 +170,7 @@ const Header = () => {
 
             {/* Utility Icons */}
             <div className="flex items-center gap-1 sm:gap-2">
-              <button 
+              <button
                 onClick={() => setSearchOpen(true)}
                 className="p-2 text-gray-600 hover:bg-gray-100 rounded-full transition-colors"
               >
@@ -205,7 +205,7 @@ const Header = () => {
             </div>
 
             {/* Mobile Menu Toggle */}
-            <button 
+            <button
               onClick={() => setMobileMenuOpen(true)}
               className="lg:hidden p-2 text-gray-800 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors ml-1"
             >
@@ -217,9 +217,9 @@ const Header = () => {
 
       {/* ================= 3. MOBILE DRAWER ================= */}
       <div className={`fixed inset-0 z-[100] lg:hidden transition-all duration-500 ${mobileMenuOpen ? 'visible' : 'invisible'}`}>
-        
+
         {/* Backdrop */}
-        <div 
+        <div
           className={`absolute inset-0 bg-black/30 backdrop-blur-[2px] transition-opacity duration-500 ${mobileMenuOpen ? 'opacity-100' : 'opacity-0'}`}
           onClick={() => setMobileMenuOpen(false)}
         />
@@ -231,11 +231,11 @@ const Header = () => {
           flex flex-col
           ${mobileMenuOpen ? 'translate-x-0' : 'translate-x-full'}
         `}>
-          
+
           {/* Drawer Header */}
           <div className="p-5 flex items-center justify-between border-b border-gray-100 bg-gray-50/50">
             <h2 className="font-bold text-lg text-gray-800">Menu</h2>
-            <button 
+            <button
               onClick={() => setMobileMenuOpen(false)}
               className="p-2 bg-white rounded-full shadow-sm text-gray-500 hover:text-red-500 transition-colors"
             >
@@ -245,7 +245,7 @@ const Header = () => {
 
           {/* Drawer Body */}
           <div className="flex-1 overflow-y-auto p-5 space-y-6">
-            
+
             {/* Location Mobile */}
             <div className="bg-emerald-50 rounded-xl p-4 flex items-center gap-3 border border-emerald-100">
               <div className="bg-white p-2.5 rounded-full text-emerald-600 shadow-sm">
@@ -254,7 +254,7 @@ const Header = () => {
               <div className="flex-1 min-w-0">
                 <p className="text-xs text-emerald-600 font-semibold uppercase tracking-wide">Delivering to</p>
                 <p className="text-sm font-bold text-gray-800 truncate">
-                   {isLoadingLoc ? "Locating..." : (locationData ? `${locationData.city}, ${locationData.region}` : "Location not set")}
+                  {isLoadingLoc ? "Locating..." : (locationData ? `${locationData.city}, ${locationData.region}` : "Location not set")}
                 </p>
               </div>
               {!locationData && (
@@ -274,8 +274,8 @@ const Header = () => {
                   onClick={() => setMobileMenuOpen(false)}
                   className={({ isActive }) => `
                     flex items-center justify-between px-4 py-3 rounded-xl transition-all
-                    ${isActive 
-                      ? 'bg-gray-100 text-emerald-700 font-semibold' 
+                    ${isActive
+                      ? 'bg-gray-100 text-emerald-700 font-semibold'
                       : 'text-gray-600 hover:bg-gray-50 hover:pl-6'}
                   `}
                 >
@@ -286,16 +286,16 @@ const Header = () => {
             </div>
 
             <hr className="border-gray-100" />
-            
+
             {/* Account Mobile */}
             <div className="space-y-1">
-               <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3 px-2">Account</p>
-               <NavLink to="/orders" className="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-xl">
-                 <FiShoppingCart className="text-gray-400" /> My Orders
-               </NavLink>
-               <NavLink to="/wishlist" className="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-xl">
-                 <FiHeart className="text-gray-400" /> Wishlist
-               </NavLink>
+              <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3 px-2">Account</p>
+              <NavLink to="/orders" className="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-xl">
+                <FiShoppingCart className="text-gray-400" /> My Orders
+              </NavLink>
+              <NavLink to="/wishlist" className="flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-50 rounded-xl">
+                <FiHeart className="text-gray-400" /> Wishlist
+              </NavLink>
             </div>
           </div>
 

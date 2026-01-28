@@ -3,13 +3,11 @@ import { List } from '../../types/itemList';
 import ItemsGrid from './itemsGrid';
 import { FiBox } from 'react-icons/fi';
 
-function CartItems({ items }: { items: List }): React.ReactElement {
+function CartItem({ items }: { items: List }): React.ReactElement {
   const [animate, setanimate] = useState(false);
   return (
-    <section className='rounded-lg shadow-2xl'>
-      <ItemsGrid className={''}>
 
-        <div className='bg-white shadow-sm rounded-lg'>
+        <div className='bg-white shadow-sm rounded-lg flex flex-wrap justify-between p-2'>
 
           {/**cart items */}
           <div className='rounded-lg object-cover'>
@@ -54,10 +52,7 @@ function CartItems({ items }: { items: List }): React.ReactElement {
           </div>
 
         </div>
-
-      </ItemsGrid>
-    </section>
   )
 }
 
-export default CartItems
+export default CartItem
