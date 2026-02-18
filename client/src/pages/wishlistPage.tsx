@@ -3,17 +3,20 @@ import axios from 'axios';
 
 import {type List} from "../types/itemList"
 import ItemsGrid from '../components/component/itemsGrid';
+import WishItems from '../components/component/WishItems.tsx';
+import { useAppSelector } from '../app/hooks';
 
 function WishList() {
-  const [wishData, setWishData] = useState<List[]>([]);
   const [loading, setLoading] = useState(true);
+
+  const wishData = useAppSelector(state=>state.wishItems.wishItems);
 
   useEffect(() => {
     // useSelector call hoga idhar 
   }, []);
 
   const handleRemove = (id: string) => {
-    setWishData(prev => prev.filter(item => item.id !== id));
+   //dispatch use krna hai yaha parr
   };
 
   return (
@@ -40,7 +43,9 @@ function WishList() {
             </div>
         ) : (
             // Passing the data down to the grid
-            <ItemsGrid items={wishData} onRemove={handleRemove} />
+            <ItemsGrid className=''>
+               {wishData.map((items)=>(<WishItems key={items.id} items={items}/>))}
+            </ItemsGrid>
         )}
       </main>
     </div>

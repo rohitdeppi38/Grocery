@@ -53,6 +53,7 @@ const Header = () => {
 
   const navLinks = [
     { name: "Home", path: "/" },
+    {name: "All", path: "/all"},
     { name: "Vegetables", path: "/vegetables" },
     { name: "Fruits", path: "/fruits" },
     { name: "Dairy", path: "/dairy" },
@@ -104,7 +105,7 @@ const Header = () => {
           sticky top-0 z-50 w-full transition-all duration-300 border-b border-transparent
           ${isScrolled
             ? 'bg-white/90 backdrop-blur-md shadow-sm border-gray-100 py-2'
-            : 'bg-white py-4'}
+            : 'bg-[#F3F5F0] py-4'}
         `}
       >
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 flex items-center justify-between gap-4">

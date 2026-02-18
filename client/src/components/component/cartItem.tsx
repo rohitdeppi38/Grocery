@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { List } from '../../types/itemList';
 import ItemsGrid from './itemsGrid';
 import { FiBox } from 'react-icons/fi';
+import "../../index.css"
 
 function CartItem({ items }: { items: List }): React.ReactElement {
   const [animate, setanimate] = useState(false);

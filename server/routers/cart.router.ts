@@ -9,7 +9,15 @@ router.get('/',(req,res)=>{
 
 router.post('/add',(req,res)=>{
     console.log(req.body);
-    res.send("Item added to cart successfully");
+    
+    //add to cart logic
+    const { productId, quantity } = req.body;
+
+    if(!productId || !quantity) {
+        return res.status(400).json({ message: "Product ID and quantity are required" });
+    }
+
+    //add to cart logic here
 });
 
 export default router;

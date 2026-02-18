@@ -61,7 +61,8 @@ const All = () => {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
+    <div className='bg-[#F3F5F0]'>
+      <div className="max-w-7xl bg-[#F3F5F0] mx-auto px-4 py-8">
       
       {/* Section Header */}
       <div className="flex items-end justify-between mb-6 md:mb-8">
@@ -84,6 +85,7 @@ const All = () => {
             ))
         }
       </div>
+    </div>
     </div>
   );
 };

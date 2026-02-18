@@ -15,7 +15,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-stone-900 text-stone-300 font-sans mt-20">
+    <footer className="bg-stone-900 text-stone-300 font-sans mt-2">
       
       {/* ================= TOP SECTION: NEWSLETTER ================= */}
       <div className="border-b border-stone-800">

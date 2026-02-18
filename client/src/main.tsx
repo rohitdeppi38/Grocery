@@ -16,13 +16,15 @@ import Signup from './features/authentication/signup'
 import WishList from './pages/wishlistPage'
 import Cart from './pages/cart'
 import store from './app/store'
+import { Home } from './pages/home'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
     children: [
-      { path: '/', element: <All /> },
+      {path:'/',element:<Home/>},
+      { path: '/all', element: <All /> },
       { path: '/vegetables', element: <Vegetables /> },
       { path: '/fruits', element: <Fruits /> },
       {path:'/dairy',element:<Tea/>},
