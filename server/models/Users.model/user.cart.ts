@@ -2,6 +2,7 @@ import mongoose, {Schema,Types,Document} from "mongoose";
 
 interface IUserProduct{
     productId?:Types.ObjectId;
+    quantity?:number;
     addedAt?:Date;
 }
 
@@ -26,12 +27,12 @@ const userCartSchema = new Schema<IUserCart>({
                 type:mongoose.Schema.Types.ObjectId,
                 ref:'Product',
                 required:true,
-                Quantity:{
+            },
+            quantity:{
                     type:Number,
                     required:true,
-                    min:1
-                }
-            },
+                    default:1
+                },
             addedAt:{
                 type:Date,
                 default:Date.now
@@ -40,6 +41,6 @@ const userCartSchema = new Schema<IUserCart>({
     ],
 },{timestamps:true});
 
-const UserCart = mongoose.model<IUserCart>('UserCart',userCartSchema);
+const userCart = mongoose.model<IUserCart>('UserCart',userCartSchema);
 
-export default UserCart;
+export default userCart;
