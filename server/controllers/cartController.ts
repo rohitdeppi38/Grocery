@@ -56,6 +56,11 @@ export const removeFromCart = async(req:Request,res:Response)=>{
     const userId = req.params;
     const {productId} = req.body;
 
-    let cart = await userCart.find({userId});
+    try {
+        let cart = await userCart.find({userId});
+        
+    } catch (error) {
+        
+    }
     
 }
