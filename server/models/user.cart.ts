@@ -24,15 +24,20 @@ const userCartSchema = new Schema<IUserCart>({
         {
             productId:{
                 type:mongoose.Schema.Types.ObjectId,
-                ref:'product',
+                ref:'Product',
                 required:true,
+                Quantity:{
+                    type:Number,
+                    required:true,
+                    min:1
+                }
             },
             addedAt:{
                 type:Date,
                 default:Date.now
             }
         }
-    ]
+    ],
 },{timestamps:true});
 
 const UserCart = mongoose.model<IUserCart>('UserCart',userCartSchema);

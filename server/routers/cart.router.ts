@@ -1,23 +1,30 @@
-import { Router } from "express";
+import {Router} from 'express';
 
-const router = Router();
+import UserCart from '../models/user.cart';
 
-router.get('/',(req,res)=>{
-    console.log(req.body);
-    res.send("Hello from cart router");
+const cartRouter = Router();
+
+cartRouter.get('/:userId',async(req,res)=>{
+    const {userId} = req.params;
+    try{
+        const cart = await UserCart.findOne({userId}).populate('products.productId');
+        if(!cart){
+            return res.status(404).json({message:"Cart not found"});
+        }
+        res.json(cart);
+    }catch(err){
+        console.error(err);
+    }
 });
 
-router.post('/add',(req,res)=>{
-    console.log(req.body);
-    
-    //add to cart logic
-    const { productId, quantity } = req.body;
+cartRouter.post('/:userId/addToCart',async(req,res)=>{
+    const {userId} = req.params;
+    const {productId} = req.body;
 
-    if(!productId || !quantity) {
-        return res.status(400).json({ message: "Product ID and quantity are required" });
+    try{
+        
     }
 
-    //add to cart logic here
-});
+})
 
-export default router;
+export default cartRouter;
