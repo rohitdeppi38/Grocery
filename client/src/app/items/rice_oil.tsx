@@ -1,28 +1,29 @@
 import React, { useEffect, useState } from 'react';
+import { FiAlertCircle } from 'react-icons/fi';
+
+import { useAppDispatch, useAppSelector } from '../hooks';  
 
 import type { List } from '../../types/itemList';
 import { ProductSkeleton } from '../../components/component/skeleton';
 import { ProductCard } from '../../components/component/itemStructure';
-import { FiAlertCircle } from 'react-icons/fi';
+
+import { fetchProducts } from '../../features/storeItems/productsDetailsThunk';
 
 const RiceOil:React.FC = () => {
-  const [items, setItems] = useState<List[]>([]);
-  const [loading,setLoading] = useState(true);
-  const [error,setError] = useState<null | String>(null);
+ 
+  const dispatch = useAppDispatch();
+  
+  const {items,error,loading} = useAppSelector((state)=>{
+    const filteredItems = state.productsDetails.items.filter((item)=>item.category.toLowerCase() === "grocery")
+    return {
+      items: filteredItems,
+      error: state.productsDetails.error,
+      loading: state.productsDetails.loading
+    }
+  })
 
   useEffect(() => {
-   try {
-    ( async ()=>{
-      const data:List[] = await (await fetch('all_item.json')).json();
-      const riceOilItems = data.filter(item => item.category === "rice_oil");
-      setItems(riceOilItems);
-      setLoading(false);
-    })();
-    }catch(error){
-      console.error("Error fetching rice and oil items:", error);
-      setLoading(false);
-      setError("Failed to load rice and oil products.");
-    }
+    dispatch(fetchProducts());
   }, []);
 
    if (error) {

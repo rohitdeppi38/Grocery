@@ -8,8 +8,9 @@ import type {List} from "../../types/itemList"
 export const fetchProducts = createAsyncThunk<List[],void,{ rejectValue: string }>(
   "products/fetch",
   async (_, thunkAPI) => {
+    //temparary link
     try {
-      const res = await axios.get("http://localhost:8000");
+      const res = await axios.get('all_item.json');
       return res.data;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(

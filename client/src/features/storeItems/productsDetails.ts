@@ -4,13 +4,13 @@ import type { List } from "../../types/itemList";
 import { fetchProducts } from "./productsDetailsThunk";
 
 interface itemState{
-    products:List[];
+    items:List[];
     loading:boolean;
     error: string | null;
 }
 
 const initialState :itemState={
-    products:[],
+    items:[],
     loading:true,
     error:null
 }
@@ -25,7 +25,7 @@ const productSlice = createSlice({
         });
         builder.addCase(fetchProducts.fulfilled,(state,action)=>{
             state.loading=false;
-            state.products=action.payload;
+            state.items=action.payload;
         });
         builder.addCase(fetchProducts.rejected,(state,action)=>{
             state.loading = false;

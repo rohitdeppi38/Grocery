@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import { FiHeart, FiStar, FiPlus, FiX } from 'react-icons/fi';
 
 import type { List } from '../../types/itemList';
+import { useAppDispatch } from '../../app/hooks';
+import { addLocalCart } from '../../features/userItems/cart/cartItems';
 
 
 // --- INDIVIDUAL CARD COMPONENT ---
@@ -10,14 +12,21 @@ export const ProductCard = ({ item }: { item: List }) => {
   const isOutOfStock = item.stock === 0;
   const isLowStock = item.stock > 0 && item.stock < 10;
 
+  const dispatch = useAppDispatch();
+
+  function handleApiClick(){
+    dispatch(addLocalCart(item));
+    dispatch()
+  }
+
   return (
     <div className="group relative bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-300 flex flex-col overflow-hidden">
       
       {/* 1. Image Area */}
-      <div className="relative aspect-[4/3] overflow-hidden bg-gray-50">
+      <div className="relative aspect-[4/3] overflow-hidden cursor:pointer bg-gray-50">
         {/* Wishlist Button (Floating) */}
-        <button className="absolute top-3 right-3 z-10 p-2 bg-white/80 backdrop-blur-sm rounded-full text-gray-400 hover:text-red-500 hover:bg-white transition-colors shadow-sm opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 duration-300">
-          <FiHeart size={18} />
+        <button title="add to wishlist" className="absolute top-3 right-3 z-10 p-2 bg-white/80 backdrop-blur-sm cursor-pointer rounded-full text-gray-400 hover:text-red-500 hover:bg-white transition-colors shadow-sm opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 duration-300" onClick={handleApiClick}>
+          <FiHeart size={18}/>
         </button>
 
         {/* Badges */}
@@ -78,7 +87,7 @@ export const ProductCard = ({ item }: { item: List }) => {
           <button 
             disabled={isOutOfStock}
             className={`
-              flex items-center justify-center w-10 h-10 rounded-full transition-all duration-200 shadow-sm
+              flex items-center cursor-pointer justify-center w-10 h-10 rounded-full transition-all duration-200 shadow-sm
               ${isOutOfStock 
                 ? 'bg-gray-100 text-gray-400 cursor-not-allowed' 
                 : 'bg-emerald-50 text-emerald-600 hover:bg-emerald-600 hover:text-white hover:scale-105 active:scale-95'}

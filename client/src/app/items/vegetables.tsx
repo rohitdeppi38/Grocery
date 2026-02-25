@@ -1,30 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import { FiAlertCircle } from 'react-icons/fi';
 
+import { useAppDispatch, useAppSelector } from '../hooks';
+
 import { ProductCard } from '../../components/component/itemStructure';
 import { ProductSkeleton } from '../../components/component/skeleton';  
 
 import type { List } from '../../types/itemList';
+import { fetchProducts } from '../../features/storeItems/productsDetailsThunk';
 
 
 const Vegetables:React.FC = () => {
-  const [items, setItems] = useState<List[]>([]);
-  const [loading,setLoading] = useState(true);
-  const [error,setError] = useState<null | String>(null);
+    const dispatch = useAppDispatch();
+
+    const {items,error,loading} = useAppSelector(state=>{
+      const fetchProducts = state.productsDetails.items.filter(item=>item.category.toLowerCase() === 'vegetable');
+      return {
+        items:fetchProducts,
+        error: state.productsDetails.error,
+        loading: state.productsDetails.loading
+      }
+    })
+
 
   useEffect(() => {
-    try{
-       ( async ()=>{
-      const data:List[] = await (await fetch('all_item.json')).json();
-      const vegetableItems = data.filter(item => item.category === "vegetable");
-      setItems(vegetableItems);
-      setLoading(false);
-    })();
-    }catch(error){
-      console.error("Error fetching vegetable items:", error);
-      setLoading(false);
-      setError("Failed to load vegetable products.");
-    }
+    dispatch(fetchProducts());
     }, []);
 
    if (error) {

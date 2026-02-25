@@ -4,32 +4,24 @@ import { FiShoppingCart, FiHeart, FiStar, FiPlus, FiAlertCircle } from 'react-ic
 import { ProductCard } from '../../components/component/itemStructure';
 import { ProductSkeleton } from '../../components/component/skeleton';
 
+import { useAppDispatch } from '../hooks';
+import { useAppSelector } from '../hooks';
+
 import type { List } from '../../types/itemList';
+import { fetchProducts } from '../../features/storeItems/productsDetailsThunk';
 
 
 
 const All = () => {
-  const [items, setItems] = useState<List[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    // Simulate a slight delay to show off the loading skeleton (optional)
-    const fetchData = async () => {
-      try {
-        const res = await fetch('/all_item.json');
-        if (!res.ok) throw new Error("Failed to fetch data");
-        const data = await res.json();
-        setItems(data);
-      } catch (err) {
-        console.error(err);
-        setError("Could not load products.");
-      } finally {
-        setLoading(false);
-      }
-    };
+  const {loading,error,items}=useAppSelector(
+    (state)=>state.productsDetails
+  )
 
-    fetchData();
+  const dispatch = useAppDispatch();
+
+  useEffect(()=>{
+    dispatch(fetchProducts());
   }, []);
 
   if (error) {

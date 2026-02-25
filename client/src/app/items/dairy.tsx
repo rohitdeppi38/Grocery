@@ -1,29 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { FiShoppingCart, FiHeart, FiStar, FiPlus, FiAlertCircle } from 'react-icons/fi';
+
 import { ProductCard } from '../../components/component/itemStructure';
 import { ProductSkeleton } from '../../components/component/skeleton';
-import { FiAlertCircle } from 'react-icons/fi';
+
+import { useAppDispatch } from '../hooks';
+import { useAppSelector } from '../hooks';
 
 import type { List } from '../../types/itemList';
+import { fetchProducts } from '../../features/storeItems/productsDetailsThunk';
 
 const Dairy: React.FC = () => {
-  const [items, setItems] = useState<List[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+
+  const {items,error,loading} = useAppSelector((state)=>{
+    const filteredItems = state.productsDetails.items.filter((item)=>item.category.toLowerCase() === "dairy")
+    return {
+      items: filteredItems,
+      error: state.productsDetails.error,
+      loading: state.productsDetails.loading
+    }
+  })
+
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    fetch('/all_item.json')
-      .then(res => res.json())
-      .then((data: List[]) => {
-        const dairyItems = data.filter(item => item.category === "dairy");
-        setItems(dairyItems);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error(err);
-        setLoading(false);
-        setError("Failed to load dairy products.");
-      });
-  }, []);
+    // TODO: Add effect logic here
+    dispatch(fetchProducts());
+  }, [dispatch]);
 
   if (error) {
      return (

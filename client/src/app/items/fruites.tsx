@@ -5,25 +5,25 @@ import type { List } from '../../types/itemList';
 import { ProductSkeleton } from '../../components/component/skeleton';
 import { ProductCard } from '../../components/component/itemStructure';
 
+import { useAppDispatch, useAppSelector } from '../hooks';
+import { fetchProducts } from '../../features/storeItems/productsDetailsThunk'; 
+
 const Fruits:React.FC = () => {
-  const [items, setitems] = useState<List[]>([]);
-  const [loading,setLoading] = useState(true);
-  const [error,setError] = useState<null | String>(null);
+ 
+  const {items,error,loading} = useAppSelector((state)=>{
+    const filteredItems = state.productsDetails.items.filter((item)=>item.category.toLowerCase() === "fruit")
+    return {
+      items: filteredItems,
+      error: state.productsDetails.error,
+      loading: state.productsDetails.loading
+    }
+  })
+
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    fetch('all_item.json')
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        const fruits = data.filter((item: any) => item.category === "fruit");
-        setitems(fruits)
-        setLoading(false);
-      })
-      .catch((error)=>{
-        console.log("Error",error);
-        setError(error);
-      });
-  }, []);
+   dispatch(fetchProducts());
+  }, [dispatch]);
 
   if (error) {
        return (
