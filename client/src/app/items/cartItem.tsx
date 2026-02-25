@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { List } from '../../types/itemList';
-import ItemsGrid from './itemsGrid';
+import ItemsGrid from '../../components/component/itemsGrid';
 import { FiBox } from 'react-icons/fi';
 import "../../index.css"
 

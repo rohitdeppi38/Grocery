@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import {type List} from "../types/itemList"
 import ItemsGrid from '../components/component/itemsGrid';
-import WishItems from '../components/component/WishItems.tsx';
+import WishItems from '../app/items/WishItems';
 import { useAppSelector } from '../app/hooks';
 
 function WishList() {

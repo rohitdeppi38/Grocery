@@ -1,7 +1,7 @@
 import {createSlice,type PayloadAction} from "@reduxjs/toolkit";
 
-import type{List} from "../../types/itemList"
-import { fetchCartItems } from "./itemthunks";
+import type{List} from "../../../types/itemList"
+import { fetchCartItems } from "./cartItemsThunk";
 
 interface ItemState {
     cartItems:List[];

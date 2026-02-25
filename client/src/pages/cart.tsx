@@ -4,7 +4,7 @@ import axios from 'axios';
 //type imported
 import { type List } from '../types/itemList';
 import ItemsGrid from '../components/component/itemsGrid';
-import CartItem from '../components/component/cartItem';
+import CartItem from '../app/items/cartItem';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 
 
@@ -40,7 +40,7 @@ const Cart = () => {
                 data.length >0 ? 
                  <div className='rounded-lg shadow-2xl max-w-7xl mx-auto'>
                     <ItemsGrid className={''}>
-                        {data.map((item)=>(<CartItem key={item.id} item={item}/>))}
+                        {data.map((item)=>(<CartItem key={item.id} items={item}/>))}
                     </ItemsGrid>
                 </div>:
                 <div className='text-center p-4'>

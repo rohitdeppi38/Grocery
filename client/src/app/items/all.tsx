@@ -1,0 +1,83 @@
+import { useEffect, useState } from 'react';
+import { FiShoppingCart, FiHeart, FiStar, FiPlus, FiAlertCircle } from 'react-icons/fi';
+
+import { ProductCard } from '../../components/component/itemStructure';
+import { ProductSkeleton } from '../../components/component/skeleton';
+
+import type { List } from '../../types/itemList';
+
+
+
+const All = () => {
+  const [items, setItems] = useState<List[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    // Simulate a slight delay to show off the loading skeleton (optional)
+    const fetchData = async () => {
+      try {
+        const res = await fetch('/all_item.json');
+        if (!res.ok) throw new Error("Failed to fetch data");
+        const data = await res.json();
+        setItems(data);
+      } catch (err) {
+        console.error(err);
+        setError("Could not load products.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  if (error) {
+    return (
+      <div className="flex flex-col items-center justify-center py-20 text-gray-500">
+        <FiAlertCircle size={40} className="mb-2 text-red-400" />
+        <p>{error}</p>
+      </div>
+    );
+  }
+
+  return (
+    <div className='bg-[#F3F5F0]'>
+      <div className="max-w-7xl bg-[#F3F5F0] mx-auto px-4 py-8">
+      
+      {/* Section Header */}
+      <div className="flex items-end justify-between mb-6 md:mb-8">
+        <div>
+          <h2 className="text-2xl md:text-3xl font-bold text-gray-900">All Products</h2>
+          <p className="text-gray-500 text-sm mt-1">Fresh from the farm to your kitchen</p>
+        </div>
+        <span className="text-sm font-medium text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100">
+          {items.length} Items
+        </span>
+      </div>
+
+      {/* Grid Layout */}
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+        
+        {loading
+          ? Array.from({ length: 8 }).map((_, i) => <ProductSkeleton key={i} />)
+          : items.map((item) => (
+              <ProductCard key={item.id} item={item} />
+            ))
+        }
+      </div>
+    </div>
+    </div>
+  );
+};
+
+
+// Simple helper for the X icon
+const FiXSmall = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="18" y1="6" x2="6" y2="18"></line>
+    <line x1="6" y1="6" x2="18" y2="18"></line>
+  </svg>
+);
+
+export default All;

@@ -6,11 +6,11 @@ import { GoogleOAuthProvider } from '@react-oauth/google'
 import { Provider } from 'react-redux'
 
 
-import All from './components/component/all'
-import Vegetables from './components/component/vegetables'
-import Fruits from './components/component/fruites'
-import Tea from './components/component/dairy'
-import RiceOil from './components/component/rice_oil'
+import All from './app/items/all'
+import Vegetables from './app/items/vegetables'
+import Fruits from './app/items/fruites.tsx'
+import Dairy from './app/items/dairy.tsx';
+import RiceOil from './app/items/rice_oil.tsx'
 import Login from './features/authentication/login'
 import Signup from './features/authentication/signup'
 import WishList from './pages/wishlistPage'
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
       { path: '/all', element: <All /> },
       { path: '/vegetables', element: <Vegetables /> },
       { path: '/fruits', element: <Fruits /> },
-      {path:'/dairy',element:<Tea/>},
+      {path:'/dairy',element:<Dairy/>},
       {path:'/riceOil',element:<RiceOil/>},
       {path:'/login',element:<Login/>},
       {path:'/signup',element:<Signup/>},

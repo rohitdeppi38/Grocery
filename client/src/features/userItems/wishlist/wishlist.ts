@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { fetchWishList, removeWishItems } from "./itemthunks";
-import { List } from "../../types/itemList";
+import { fetchWishList,  } from "./wishlistThunk.ts";
+import { List } from "../../../types/itemList.ts";
 
 
 interface ItemState {
@@ -39,19 +39,6 @@ const wishSlice = createSlice({
         })
         .addCase(fetchWishList.rejected,(state,action)=>{
             state.loading = false;
-            state.error = action.error.message ?? "Failed";
-        })
-
-        //Remove the wish items form the database 
-        
-        .addCase(removeWishItems.pending,(state)=>{
-            state.loading=true;
-        })
-        .addCase(removeWishItems.fulfilled,(state)=>{
-            state.loading=false;
-        })
-        .addCase(removeWishItems.rejected,(state,action)=>{
-            state.loading=false;
             state.error = action.error.message ?? "Failed";
         })
     }

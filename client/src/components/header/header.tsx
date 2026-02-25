@@ -192,14 +192,14 @@ const Header = () => {
             <div className="hidden lg:block h-6 w-px bg-gray-200 mx-1"></div>
 
             {/* --- DESKTOP AUTH BUTTONS --- */}
-            <div className="hidden lg:flex items-center gap-2">
+            <div className="hidden lg:flex items-center gap-2 cursor:pointer">
               <NavLink to="/login">
-                <button className="px-4 py-2 text-sm font-semibold text-gray-600 hover:text-emerald-700 transition-colors">
+                <button className="px-4 py-2 text-sm font-semibold text-gray-600 hover:text-emerald-700 transition-colors cursor-pointer">
                   Log In
                 </button>
               </NavLink>
               <NavLink to="/signup">
-                <button className="px-5 py-2 text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-full shadow-lg shadow-emerald-200 transition-all hover:shadow-emerald-300 hover:-translate-y-1">
+                <button className="px-5 py-2 text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-full shadow-lg shadow-emerald-200 transition-all cursor:pointer hover:shadow-emerald-300 hover:-translate-y-1">
                   Sign Up
                 </button>
               </NavLink>
