@@ -5,6 +5,7 @@ import { FiHeart, FiStar, FiPlus, FiX } from 'react-icons/fi';
 import type { List } from '../../types/itemList';
 import { useAppDispatch } from '../../app/hooks';
 import { addLocalCart } from '../../features/userItems/cart/cartItems';
+import { postCartItems } from '../../features/userItems/cart/cartItemsThunk';
 
 
 // --- INDIVIDUAL CARD COMPONENT ---
@@ -16,7 +17,7 @@ export const ProductCard = ({ item }: { item: List }) => {
 
   function handleApiClick(){
     dispatch(addLocalCart(item));
-    dispatch()
+    dispatch(postCartItems([item]));
   }
 
   return (

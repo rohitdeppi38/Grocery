@@ -1,3 +1,4 @@
+
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
@@ -12,3 +13,17 @@ export const fetchCartItems = createAsyncThunk<List[],void>('items/fetchCartItem
     return res.data;
 })
 
+{/**post cart items of the user */}
+
+export const postCartItems = createAsyncThunk<void,List[]>('items/postCartItems',
+    async(item,thunkApi)=>{
+        try{
+            const res = await axios.post('/my post api',item);
+            return res.data;
+        }catch(error:any){
+            return thunkApi.rejectWithValue(
+                error.response?.data?.message || "somthing went wrong"
+            );
+        }
+    }
+)
