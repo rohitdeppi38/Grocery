@@ -7,25 +7,25 @@ import type { List } from "../../../types/itemList";
 
 
 
-{/** fetch wish list items of the user  */}
-export const fetchWishList = createAsyncThunk<List[],void>('items/fetchWish',
-    async ()=>{
-        const res = await axios.get('/my wish api');
+{/** fetch wish list items of the user  */ }
+export const fetchWishList = createAsyncThunk<List[], string>('items/fetchWish',
+    async (userId) => {
+        const res = await axios.get(`http://localhost:8000/api/wishlist/${userId}/get`);
         return res.data;
     }
 )
 
 
-{/**post wish list items of the user  */}
+{/**post wish list items of the user  */ }
 
-export const postWishItems = createAsyncThunk<void,List[]>("items/postWish",
-    async (items,thunkApi)=>{
-    try {
-        const res = await axios.post("my post route",items);
-        return res.data;
-    } catch (error:any) {
-        return thunkApi.rejectWithValue(
-            error.response?.data?.message || "somthing went wrong"
-        );
-    }
-});
+export const postWishItems = createAsyncThunk<void, { userId: string, items: List[] }>("items/postWish",
+    async ({ userId, items }, thunkApi) => {
+        try {
+            const res = await axios.post(`http://localhost:8000/api/wishlist/${userId}/add`, items);
+            return res.data;
+        } catch (error: any) {
+            return thunkApi.rejectWithValue(
+                error.response?.data?.message || "somthing went wrong"
+            );
+        }
+    });

@@ -59,18 +59,28 @@ export const removeFromCart = async (req: Request, res: Response) => {
     try {
         let cart = await userCart.findOne({ userId });
 
-        const index = cart?.products.findIndex(item => item.productId?.toString() === productId);
-        const removalProduct = cart?.products[index]
+        if (!cart) {
+            return res.status(404).json({ message: "Cart not found" });
+        }
 
+        const index = cart.products.findIndex(item => item.productId?.toString() === productId);
 
-        removalProduct.quantity === 1
-            ? cart.products.splice(index, 1)
-            : removalProduct.quantity -= 1;
+        if (index === -1) {
+            return res.status(404).json({ message: "Product not found in cart" });
+        }
 
+        const removalProduct = cart.products[index];
 
-        cart?.save();
+        if (removalProduct.quantity && removalProduct.quantity === 1) {
+            cart.products.splice(index, 1);
+        } else if (removalProduct.quantity) {
+            removalProduct.quantity -= 1;
+        }
+
+        await cart.save();
         res.json(cart);
     } catch (error) {
         console.error(error);
+        res.status(500).json({ message: "Internal server error" });
     }
 }

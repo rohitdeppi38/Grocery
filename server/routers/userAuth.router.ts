@@ -1,6 +1,7 @@
 import { Router } from "express";
 
 import User from "../models/Users.model/user";
+import jwt from "jsonwebtoken";
 
 const router = Router();
 
@@ -23,7 +24,6 @@ router.post('/register', async (req, res) => {
         if (!username || !email || !password) {
             return res.status(400).json({ message: "All fields are required" });
         }
-
         
         //check if user already exists
         const existingUser = await User.findOne({ email: email });
@@ -41,9 +41,39 @@ router.post('/register', async (req, res) => {
     }
 })
 
-router.post('/login', (req, res) => {
-    console.log(req.body);
-    res.send("User logged in successfully");
-})
+router.post('/login', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    //  Check if user exists
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(400).json({ message: "User not found" });
+    }
+
+    //  Check password (simple version for now)
+    if (user.password !== password) {
+      return res.status(400).json({ message: "Invalid credentials" });
+    }
+
+    //  Generate Token
+    const token = jwt.sign(
+      { id: user._id },
+      process.env.JWT_SECRET!,
+      { expiresIn: "1d" }
+    );
+
+    // Send token to frontend
+    res.json({
+      message: "Login successful",
+      token
+    });
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
 
 export default router;

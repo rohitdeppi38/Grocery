@@ -17,7 +17,7 @@ export const ProductCard = ({ item }: { item: List }) => {
 
   function handleApiClick(){
     dispatch(addLocalCart(item));
-    dispatch(postCartItems([item]));
+    dispatch(postCartItems(item));
   }
 
   return (
