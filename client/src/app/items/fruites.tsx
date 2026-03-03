@@ -3,7 +3,7 @@ import { FiAlertCircle } from 'react-icons/fi';
 
 import type { List } from '../../types/itemList';
 import { ProductSkeleton } from '../../components/component/skeleton';
-import { ProductCard } from '../../components/component/itemStructure';
+import ProductCard  from '../../components/lazyimport/lazyProduct';
 
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { fetchProducts } from '../../features/storeItems/productsDetailsThunk'; 

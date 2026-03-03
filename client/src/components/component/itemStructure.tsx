@@ -1,11 +1,13 @@
 
-import { useEffect, useState } from 'react';
+import { lazy, useEffect, useState } from 'react';
 import { FiHeart, FiStar, FiPlus, FiX } from 'react-icons/fi';
 
 import type { List } from '../../types/itemList';
 import { useAppDispatch } from '../../app/hooks';
 import { addLocalCart } from '../../features/userItems/cart/cartItems';
 import { postCartItems } from '../../features/userItems/cart/cartItemsThunk';
+import { addWishLocal } from '../../features/userItems/wishlist/wishlist';
+import { postWishItems } from '../../features/userItems/wishlist/wishlistThunk';
 
 
 // --- INDIVIDUAL CARD COMPONENT ---
@@ -15,9 +17,14 @@ export const ProductCard = ({ item }: { item: List }) => {
 
   const dispatch = useAppDispatch();
 
-  function handleApiClick(){
+  function handleCartClick(){
     dispatch(addLocalCart(item));
     dispatch(postCartItems(item));
+  }
+
+  function wishHandler(){
+    dispatch(addWishLocal(item));
+    dispatch(postWishItems(item));
   }
 
   return (
@@ -26,7 +33,7 @@ export const ProductCard = ({ item }: { item: List }) => {
       {/* 1. Image Area */}
       <div className="relative aspect-[4/3] overflow-hidden cursor:pointer bg-gray-50">
         {/* Wishlist Button (Floating) */}
-        <button title="add to wishlist" className="absolute top-3 right-3 z-10 p-2 bg-white/80 backdrop-blur-sm cursor-pointer rounded-full text-gray-400 hover:text-red-500 hover:bg-white transition-colors shadow-sm opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 duration-300" onClick={handleApiClick}>
+        <button title="add to wishlist" className="absolute top-3 right-3 z-10 p-2 bg-white/80 backdrop-blur-sm cursor-pointer rounded-full text-gray-400 hover:text-red-500 hover:bg-white transition-colors shadow-sm opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 duration-300" onClick={wishHandler}>
           <FiHeart size={18}/>
         </button>
 
@@ -94,6 +101,7 @@ export const ProductCard = ({ item }: { item: List }) => {
                 : 'bg-emerald-50 text-emerald-600 hover:bg-emerald-600 hover:text-white hover:scale-105 active:scale-95'}
             `}
             title="Add to Cart"
+            onClick={handleCartClick}
           >
             {isOutOfStock ? <FiX /> : <FiPlus size={20} />}
           </button>
