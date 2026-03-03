@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from '../hooks';
 
 import type { List } from '../../types/itemList';
 import { ProductSkeleton } from '../../components/component/skeleton';
-import { ProductCard } from '../../components/component/itemStructure';
+import ProductCard  from '../../components/lazyimport/lazyProduct';
 
 import { fetchProducts } from '../../features/storeItems/productsDetailsThunk';
 

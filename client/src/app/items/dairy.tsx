@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { FiShoppingCart, FiHeart, FiStar, FiPlus, FiAlertCircle } from 'react-icons/fi';
 
-import { ProductCard } from '../../components/component/itemStructure';
+import ProductCard  from '../../components/lazyimport/lazyProduct';
 import { ProductSkeleton } from '../../components/component/skeleton';
 
 import { useAppDispatch } from '../hooks';
