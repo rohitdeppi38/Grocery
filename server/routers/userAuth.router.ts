@@ -2,6 +2,12 @@ import { Router } from "express";
 
 import User from "../models/Users.model/user";
 import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
+import dotenv from "dotenv";
+
+dotenv.config();
+
+const jwtSecret = process.env.JWT_SECRET as string;
 
 const router = Router();
 
@@ -17,7 +23,7 @@ router.post('/register', async (req, res) => {
     console.log(req.body);
 
     try {
-        //user registratio logic 
+        //user registration logic 
 
         const { username, email, password } = req.body;
 
@@ -29,11 +35,21 @@ router.post('/register', async (req, res) => {
         const existingUser = await User.findOne({ email: email });
 
         if (existingUser) {
+          res.redirect("/login");
             return res.status(400).json({ message: "User already exists" });
         }
+        //password hashing
+        const hashedPassword = await bcrypt.hash(password, 10);
 
         //save user to database
-        await User.create({ name: username, email: email, password: password });
+        const newUser = await User.create({ name: username, email: email, password: hashedPassword });
+        
+        //generating token
+         const token = jwt.sign(
+      { id: newUser._id },
+      jwtSecret,
+      { expiresIn: "1d" }
+    );
 
     } catch (error) {
         console.log(error);
@@ -53,14 +69,15 @@ router.post('/login', async (req, res) => {
     }
 
     //  Check password (simple version for now)
-    if (user.password !== password) {
+    const isMatched = await bcrypt.compare(password,user.password);
+    if (!isMatched) {
       return res.status(400).json({ message: "Invalid credentials" });
     }
 
     //  Generate Token
     const token = jwt.sign(
       { id: user._id },
-      process.env.JWT_SECRET!,
+      jwtSecret,
       { expiresIn: "1d" }
     );
 
