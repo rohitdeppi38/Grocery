@@ -11,12 +11,8 @@ function WishList() {
 
   const wishData = useAppSelector(state=>state.wishItems.wishItems);
 
-  useEffect(() => {
-    // useSelector call hoga idhar 
-  }, []);
-
   const handleRemove = (id: string) => {
-   //dispatch use krna hai yaha parr
+   
   };
 
   return (

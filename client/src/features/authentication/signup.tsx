@@ -1,6 +1,26 @@
 import React from 'react'
 
+import { useAppDispatch } from '../../app/hooks'
+import { signupUser } from './Auth/authThunk'
+
 const Signup = () => {
+
+  const [firstName, setfirstName] = React.useState("");
+  const [lastName,setlastName] = React.useState("");
+  const [dob,setdob] = React.useState("");
+  const [address,setAddress] = React.useState("");
+  const [email,setEmail] = React.useState("");
+  const [password,setPassword]= React.useState("");
+  const [confirmPassword,setconfirmPassword] = React.useState("");
+
+  const isValidate = (password===confirmPassword && password.length >=8 && confirmPassword.length>=8)
+
+  const dispatch = useAppDispatch();
+  
+
+  const handleSignup = ()=>{
+    dispatch(signupUser({firstName,lastName,dob,address,email,password}))
+  }
   return (
     <div className='min-h-screen flex justify-center items-center bg-gradient-to-bl from-green-50 to-amber-100 px-2'>
 
@@ -17,6 +37,8 @@ const Signup = () => {
             </label>
             <input
               type="text"
+              value={firstName}
+              onChange={(e)=>setfirstName(e.target.value)}
               placeholder='First Name'
               className='focus:outline-none focus:ring-2 focus:ring-green-400 rounded-lg border mx-2 py-2 px-4 min-w-0 flex-1' />
           </div>
@@ -29,6 +51,8 @@ const Signup = () => {
             </label>
             <input
               type="text"
+              value={lastName}
+              onChange={(e)=>setlastName(e.target.value)}
               placeholder='Last Name'
               className='focus:outline-none focus:ring-2 focus:ring-green-400 rounded-lg border mx-2 py-2 px-4 min-w-0 flex-1' />
           </div>
@@ -41,6 +65,8 @@ const Signup = () => {
             <label htmlFor="dateOfBirth" className='mx-2'>Date of Birth</label>
             <input
               type="date" max={new Date().toISOString().split('T')[0]}
+              value={dob}
+              onChange={(e)=>setdob(e.target.value)}
               className='focus:outline-none focus:ring-2 focus:ring-green-400 rounded-lg border mx-2 py-2 px-4 min-w-0 flex-1' />
           </div>
         </div>
@@ -52,6 +78,8 @@ const Signup = () => {
             <label htmlFor="user's address" className='mx-2'>Address</label>
             <input 
             type="text" 
+            value={address}
+            onChange={(e)=>setAddress(e.target.value)}
             placeholder='Enter your Address....'
             className='focus:outline-none focus:ring-2 focus:ring-green-400 rounded-lg border mx-2 py-2 min-w-0 flex-1 px-4'/>
           </div>
@@ -63,6 +91,8 @@ const Signup = () => {
           <div className='flex flex-col gap-2 mx-2 mt-2'>
             <label htmlFor="Email" className='mx-2'>Email</label>
             <input type="email" 
+            value={email}
+            onChange={(e)=>setEmail(e.target.value)}
             placeholder='rohit@gmail.com'
             className='focus:outline-none focus:ring-2 focus:ring-green-400 rounded-lg border mx-2 py-2 px-4 min-w-0 flex-1'/>
           </div>
@@ -74,18 +104,29 @@ const Signup = () => {
           <div className='flex flex-col gap-2 mx-2 mt-2'>
             <label htmlFor="password" className='mx-2 block '>Password</label>
             <input type="password" 
+            value={password}
+            onChange={(e)=>setPassword(e.target.value)}
             placeholder='Enter password'
             className='focus:outline-none focus:ring-2 focus:ring-green-400 rounded-lg border mx-2 px-4 py-2 min-w-0 flex-1'/>
             <input type="password" 
+            value={confirmPassword}
+            onChange={(e)=>setconfirmPassword(e.target.value)}
             placeholder='Confirm password'
             className='focus:outline-none focus:ring-2 focus:ring-green-400 rounded-lg border mx-2 px-4 py-2 min-w-0 flex-1'/>
           </div>
         </div>
 
+        {
+          !isValidate &&
+          <p className='text-red-500 text-center'>
+            password not matched must be at least 8 letters
+          </p>
+        }
+
         {/* signup button */}
         <div>
           <div className='m-5'>
-            <button className=' w-full text-center bg-green-600 py-2 cursor-pointer border rounded-lg hover:bg-green-700 text-white font-semibold'>
+            <button disabled={!isValidate} className=' w-full text-center bg-green-600 py-2 cursor-pointer border rounded-lg hover:bg-green-700 text-white font-semibold' onClick={handleSignup}>
               Sign up
             </button>
           </div>
