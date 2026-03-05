@@ -1,31 +1,29 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useAppDispatch } from "../../app/hooks";
+import { loginUser } from "./Auth/authThunk";
 
 const Login = () => {
 
   const navigate = useNavigate();
 
+  const dispatch = useAppDispatch();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
-    try {
-      const res = await axios.post("/api/login", {
-        email,
-        password
-      });
-
-      // Save token
-      localStorage.setItem("token", res.data.token);
-
-      // Redirect
-      navigate("/");
-    } catch (error) {
-      console.log(error);
-      alert("Login failed");
+    const result = await dispatch(loginUser({email,password}));
+    
+    if(loginUser.rejected.match(result)){
+      if(result.payload==="User not found"){
+        navigate("/user/api/auth/signup");
+      }else{
+        console.error("login error :",result.payload);
+      }
     }
-  };
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-100 to-amber-100 px-4">

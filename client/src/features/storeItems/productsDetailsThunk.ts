@@ -10,7 +10,7 @@ export const fetchProducts = createAsyncThunk<List[], void, { rejectValue: strin
   "products/fetch",
   async (_, thunkAPI) => {
     try {
-      const res = await axiosInstance.get('http://localhost:8000/api/product');
+      const res = await axiosInstance.get('http://localhost:8000/api/products');
       return res.data;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(

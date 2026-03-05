@@ -19,15 +19,15 @@ router.get('/', (req, res) => {
     }
 })
 
-router.post('/register', async (req, res) => {
+router.post('/signup', async (req, res) => {
     console.log(req.body);
 
     try {
         //user registration logic 
 
-        const { username, email, password } = req.body;
+        const { firstName, lastName, email,password,address,dob } = req.body;
 
-        if (!username || !email || !password) {
+        if (!firstName || !lastName ||!email || !password) {
             return res.status(400).json({ message: "All fields are required" });
         }
         
@@ -35,14 +35,13 @@ router.post('/register', async (req, res) => {
         const existingUser = await User.findOne({ email: email });
 
         if (existingUser) {
-          res.redirect("/login");
             return res.status(400).json({ message: "User already exists" });
         }
         //password hashing
         const hashedPassword = await bcrypt.hash(password, 10);
 
         //save user to database
-        const newUser = await User.create({ name: username, email: email, password: hashedPassword });
+        const newUser = await User.create({ name: firstName +" "+ lastName, email: email, password: hashedPassword ,address:address,dob:dob});
         
         //generating token
          const token = jwt.sign(
@@ -50,6 +49,10 @@ router.post('/register', async (req, res) => {
       jwtSecret,
       { expiresIn: "1d" }
     );
+    res.json({
+      message:"signup is sucessfull",
+      token
+    })
 
     } catch (error) {
         console.log(error);
