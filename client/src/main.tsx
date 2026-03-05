@@ -24,13 +24,13 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {path:'/',element:<Home/>},
-      { path: '/all', element: <All /> },
-      { path: '/vegetables', element: <Vegetables /> },
-      { path: '/fruits', element: <Fruits /> },
-      {path:'/dairy',element:<Dairy/>},
-      {path:'/riceOil',element:<RiceOil/>},
-      {path:'/login',element:<Login/>},
-      {path:'/signup',element:<Signup/>},
+      { path: '/api/products/all', element: <All /> },
+      { path: '/api/products/vegetables', element: <Vegetables /> },
+      { path: '/api/products/fruits', element: <Fruits /> },
+      {path:'/api/products/dairy',element:<Dairy/>},
+      {path:'/api/products/riceOil',element:<RiceOil/>},
+      {path:'/user/api/auth/login',element:<Login/>},
+      {path:'/user/api/auth/signup',element:<Signup/>},
     ]
   },
   {

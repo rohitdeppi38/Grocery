@@ -6,6 +6,8 @@ import {
 } from "react-icons/fi";
 
 const Header = () => {
+
+  const authToken = localStorage.getItem("token");
   // State
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -53,10 +55,10 @@ const Header = () => {
 
   const navLinks = [
     { name: "Home", path: "/" },
-    {name: "All", path: "/all"},
-    { name: "Vegetables", path: "/vegetables" },
-    { name: "Fruits", path: "/fruits" },
-    { name: "Dairy", path: "/dairy" },
+    { name: "All", path: "/api/products/all" },
+    { name: "Vegetables", path: "/api/products/vegetables" },
+    { name: "Fruits", path: "api/products/fruits" },
+    { name: "Dairy", path: "api/products/dairy" },
   ];
 
   return (
@@ -192,19 +194,25 @@ const Header = () => {
             <div className="hidden lg:block h-6 w-px bg-gray-200 mx-1"></div>
 
             {/* --- DESKTOP AUTH BUTTONS --- */}
-            <div className="hidden lg:flex items-center gap-2 cursor:pointer">
-              <NavLink to="/login">
-                <button className="px-4 py-2 text-sm font-semibold text-gray-600 hover:text-emerald-700 transition-colors cursor-pointer">
-                  Log In
-                </button>
-              </NavLink>
-              <NavLink to="/signup">
-                <button className="px-5 py-2 text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-full shadow-lg shadow-emerald-200 transition-all cursor:pointer hover:shadow-emerald-300 hover:-translate-y-1">
-                  Sign Up
-                </button>
-              </NavLink>
-            </div>
+            {
+              authToken
+                ? <div className="p-4 hidden lg:block rounded-full bg-gray-300">
+                    userProfile
+                </div>
+                : <div className="hidden lg:flex items-center gap-2 cursor:pointer">
+                  <NavLink to="/user/api/auth/login">
+                    <button className="px-4 py-2 text-sm font-semibold text-gray-600 hover:text-emerald-700 transition-colors cursor-pointer">
+                      Log In
+                    </button>
+                  </NavLink>
+                  <NavLink to="/user/api/auth/signup">
+                    <button className="px-5 py-2 text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-full shadow-lg shadow-emerald-200 transition-all cursor:pointer hover:shadow-emerald-300 hover:-translate-y-1">
+                      Sign Up
+                    </button>
+                  </NavLink>
+                </div>
 
+            }
             {/* Mobile Menu Toggle */}
             <button
               onClick={() => setMobileMenuOpen(true)}
@@ -301,21 +309,27 @@ const Header = () => {
           </div>
 
           {/* Drawer Footer (Auth Buttons) */}
-          <div className="p-5 border-t border-gray-100 bg-gray-50">
-            <div className="grid grid-cols-2 gap-3">
-              <NavLink to="/login" className="w-full">
-                <button className="w-full py-3 rounded-xl border border-gray-300 text-gray-700 font-medium hover:bg-white transition-colors">
-                  Login
-                </button>
-              </NavLink>
-              <NavLink to="/signup" className="w-full">
-                <button className="w-full py-3 rounded-xl bg-gray-900 text-white font-medium hover:bg-gray-800 shadow-lg shadow-gray-200 transition-all active:scale-95">
-                  Sign Up
-                </button>
-              </NavLink>
-            </div>
-          </div>
+          {
+            authToken
+              ? <div className="w-[20px] h-[20px] rounded">
+                userProfile
+              </div>
+              : <div className="p-5 border-t border-gray-100 bg-gray-50">
+                <div className="grid grid-cols-2 gap-3">
+                  <NavLink to="/user/api/auth/login" className="w-full">
+                    <button className="w-full py-3 rounded-xl border border-gray-300 text-gray-700 font-medium hover:bg-white transition-colors">
+                      Login
+                    </button>
+                  </NavLink>
+                  <NavLink to="/user/api/auth/signup" className="w-full">
+                    <button className="w-full py-3 rounded-xl bg-gray-900 text-white font-medium hover:bg-gray-800 shadow-lg shadow-gray-200 transition-all active:scale-95">
+                      Sign Up
+                    </button>
+                  </NavLink>
+                </div>
+              </div>
 
+          }
         </div>
       </div>
     </>
