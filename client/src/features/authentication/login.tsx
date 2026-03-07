@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useAppDispatch } from "../../app/hooks";
 import { loginUser } from "./Auth/authThunk";
+import { FiCircle, FiLoader } from "react-icons/fi";
 
 const Login = () => {
 
@@ -10,24 +11,29 @@ const Login = () => {
 
   const dispatch = useAppDispatch();
 
+  const [spin, setSpin] = useState(false);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
-    const result = await dispatch(loginUser({email,password}));
-    
-    if(loginUser.rejected.match(result)){
-      if(result.payload==="User not found"){
+    setSpin(true);
+    const result = await dispatch(loginUser({ email, password }));
+
+    if (loginUser.rejected.match(result)) {
+      if (result.payload === "User not found") {
         navigate("/user/api/auth/signup");
-      }else{
-        console.error("login error :",result.payload);
+      } else {
+        console.error("login error :", result.payload);
       }
+    } else {
+      navigate("/api/products/all");
     }
   }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-100 to-amber-100 px-4">
-      
+
       <div className="w-full max-w-md bg-white rounded-2xl shadow-xl p-6 sm:p-8">
 
         <h2 className="text-2xl font-bold text-center text-green-800 mb-6">
@@ -63,12 +69,11 @@ const Login = () => {
         </div>
 
         <button
-          className="w-full bg-green-600 text-white py-2 rounded-lg font-semibold hover:bg-green-700"
+          className="w-full bg-green-600 cursor-pointer text-white py-2 rounded-lg font-semibold hover:bg-green-700 flex items-center justify-center"
           onClick={handleLogin}
         >
-          Login
+          {spin ? <FiLoader size={20} className="animate-spin" /> : "Login"}
         </button>
-
       </div>
     </div>
   );

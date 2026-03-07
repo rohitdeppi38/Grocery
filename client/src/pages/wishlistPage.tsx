@@ -4,17 +4,23 @@ import axios from 'axios';
 import {type List} from "../types/itemList"
 import ItemsGrid from '../components/component/itemsGrid';
 import WishItems from '../app/items/WishItems';
-import { useAppSelector } from '../app/hooks';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
+import { fetchWishList } from '../features/userItems/wishlist/wishlistThunk';
 
 function WishList() {
   const [loading, setLoading] = useState(true);
 
   const wishData = useAppSelector(state=>state.wishItems.wishItems);
 
+  const dispatch = useAppDispatch();
+
   const handleRemove = (id: string) => {
    
   };
 
+  useEffect(()=>{
+    dispatch(fetchWishList())
+  },[])
   return (
     <div className="min-h-screen bg-gray-50 text-gray-800 font-sans">
       {/* Header Section */}
