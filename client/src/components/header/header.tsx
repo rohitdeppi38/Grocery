@@ -2,7 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import {
   FiSearch, FiMapPin, FiMenu, FiX,
-  FiShoppingCart, FiHeart, FiChevronRight, FiLoader
+  FiShoppingCart, FiHeart, FiChevronRight, FiLoader,
+  FiUsers
 } from "react-icons/fi";
 
 const Header = () => {
@@ -196,10 +197,11 @@ const Header = () => {
             {/* --- DESKTOP AUTH BUTTONS --- */}
             {
               authToken
-                ? <div className="p-4 hidden lg:block rounded-full bg-gray-300">
-                    userProfile
+                ? <div className="hidden lg:block p-3 border-t bg-gray-100 border-gray-100 bg-gray-50 rounded-full text-black">
+                  <FiUsers />
+                  <span className=""></span>
                 </div>
-                : <div className="hidden lg:flex items-center gap-2 cursor:pointer">
+                : <div className="hidden lg:flex items-center gap-2 cursor-pointer">
                   <NavLink to="/user/api/auth/login">
                     <button className="px-4 py-2 text-sm font-semibold text-gray-600 hover:text-emerald-700 transition-colors cursor-pointer">
                       Log In
@@ -311,9 +313,14 @@ const Header = () => {
           {/* Drawer Footer (Auth Buttons) */}
           {
             authToken
-              ? <div className="w-[20px] h-[20px] rounded">
-                userProfile
+              ? <div className="py-10 px-5 border border-gray-100 bg-gray-100 flex justify-between items-center">
+                <FiUsers />
+
+                <button className="bg-red-500 text-white rounded-lg text-sm font-semibold px-4 py-2 tracking-wide hover:bg-red-600">
+                  Logout
+                </button>
               </div>
+
               : <div className="p-5 border-t border-gray-100 bg-gray-50">
                 <div className="grid grid-cols-2 gap-3">
                   <NavLink to="/user/api/auth/login" className="w-full">
