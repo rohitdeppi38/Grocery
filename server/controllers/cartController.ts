@@ -1,3 +1,5 @@
+import mongoose from 'mongoose';
+import { AuthRequest } from '../middlewares/Authentication/user.loginAuth';
 import userCart from '../models/Users.model/user.cart';
 
 import { Request, Response } from 'express';
@@ -5,10 +7,15 @@ import { Request, Response } from 'express';
 
 // get cart controller function 
 
-export const getCart = async (req: Request, res: Response) => {
-    const { userId } = req.params;
+export const getCart = async (req: AuthRequest, res: Response) => {
+    const userId = req.userId;
     try {
-        const cart = await userCart.findOne({ userId }).populate('products.productId');
+        const cart = await userCart.findOne({ userId })
+        .populate('userId','name email')
+        .populate({
+            path:'products.productId',
+            select:'name price image category unit stock'
+        });
         if (!cart) {
             return res.status(404).json({ message: "Cart not found" });
         }
@@ -20,40 +27,52 @@ export const getCart = async (req: Request, res: Response) => {
 
 // add to cart controller function 
 
-export const addToCart = async (req: Request, res: Response) => {
-    const { userId } = req.params;
+export const addToCart = async (req: AuthRequest, res: Response) => {
+
+    if (!req.userId) {
+        return res.status(401).json({ message: "Unauthorized" });
+    }
+
+    const userId = new mongoose.Types.ObjectId(req.userId! as string);
     const { productId } = req.body;
 
     try {
+
         let cart = await userCart.findOne({ userId });
 
         if (!cart) {
             cart = await userCart.create({
-                userId, products: [{ productId }]
+                userId,
+                products: [{ productId, quantity: 1 }]
             });
+
             return res.json(cart);
         }
 
-        const existingProduct = cart.products.find(p => p.productId?.toString() === productId);
+        const existingProduct = cart.products.find(
+            p => p.productId?.toString() === productId
+        );
 
-        if (existingProduct && existingProduct.quantity) {
-            existingProduct.quantity += 1;
+        if (existingProduct) {
+            existingProduct.quantity = (existingProduct.quantity || 0) + 1;
         } else {
             cart.products.push({ productId, quantity: 1 });
         }
 
         await cart.save();
+
         res.json(cart);
+
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: "Internal server error" });
     }
-}
+};
 
 //remove to cart control function
 
-export const removeFromCart = async (req: Request, res: Response) => {
-    const { userId } = req.params;
+export const removeFromCart = async (req: AuthRequest, res: Response) => {
+    const userId = req.userId;
     const { productId } = req.body;
 
     try {
